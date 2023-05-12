@@ -1,6 +1,6 @@
 # Автоимпорт торговых инструментов TradingView
 
-С помощью этой инструкции можно добавить список торговых инстументов в ваш Watchlist. Данный способ немного топорный и не подходит для огромных рынков по типу США. Берите рынки поменьше. Например, добавление обыкновенных акций России заняло не более 15 минут.
+С помощью этой инструкции можно добавить список торговых инстументов в Watchlist. Данный способ не подходит для огромных рынков по типу США. Берите рынки поменьше. Например, добавление обыкновенных акций России заняло не более 15 минут.
 
 **Шаг 1**
 
@@ -26,7 +26,7 @@
 ```sh
 let timer;
 let isPaused = false;
-$(window).on("wheel", function () {
+window.addEventListener("wheel", function () {
   isPaused = true;
   clearTimeout(timer);
   timer = window.setTimeout(function () {
@@ -35,14 +35,21 @@ $(window).on("wheel", function () {
 });
 window.setInterval(function () {
   if (!isPaused) {
-    $("div.scrollContainer-vWG52QBW").scrollTop(
-      $("div.scrollContainer-vWG52QBW")[0].scrollHeight
-    );
+    const scrollContainer = document.evaluate(
+      '//*[@id="overlap-manager-root"]/div/div/div[2]/div/div[5]/div',
+      document,
+      null,
+      XPathResult.FIRST_ORDERED_NODE_TYPE,
+      null
+    ).singleNodeValue;
+    if (scrollContainer) {
+      scrollContainer.scrollTop = scrollContainer.scrollHeight;
+    }
   }
 }, 500);
 ```
 
-Скрипт будет работать до тех пор, пока крутится индикатор загрузки. Сайт можно свернуть и делать свои дела.
+Ожидаем, пока не перестанет крутиться индикатор загрузки. Переходим к шагу 3.
 
 **Шаг 3**
 
@@ -53,7 +60,7 @@ window.setInterval(function () {
 ```sh
 (() => {
   let delay = 0;
-  const stock = document.querySelectorAll("span.button-W4RYPlVi");
+  const stock = document.querySelectorAll("span.apply-common-tooltip");
   stock.forEach((stock) => {
     setTimeout(() => {
       stock.click();
