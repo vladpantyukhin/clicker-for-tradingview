@@ -1,27 +1,27 @@
-# Автоимпорт торговых инструментов TradingView
+# Auto import of trading instruments TradingView
 
-С помощью этой инструкции можно добавить список торговых инстументов в Watchlist. Данный способ не подходит для огромных рынков по типу США. Берите рынки поменьше. Например, добавление обыкновенных акций России заняло не более 15 минут.
+Using this instruction, you can add a list of trading instruments to the Watchlist. This method is not suitable for huge markets like the USA. Take smaller markets. For example, the addition of ordinary shares of Russia took no more than 15 minutes.
 
-**Шаг 1**
+**Step 1**
 
-Настройка загрузки инструментов.
+Configuring tool loading.
 
-- Нажмите + на панели Watchlist
-- В появившемся окне выберите параметры инструментов
+- Click + on the Watchlist panel
+- In the window that appears, select the tool options
 
   ![Step1](https://github.com/vladpantyukhin/clicker-for-tradingview/blob/main/screenshots/step1.jpg)
 
-**Шаг 2**
+**Step 2**
 
-Загрузка инструментов.
+Loading tools.
 
-- Откройте панель разработчика нажав F12 (Google Chrome)
-  или правый клик мыши, далее "Посмотреть код страницы или элемента"
-- Выберите вкладку Console
+- Open the Developer panel by pressing F12 (Google Chrome)
+  or right-click, then "View the code of the page or element"
+- Select the Console tab
 
   ![Step2](https://github.com/vladpantyukhin/clicker-for-tradingview/blob/main/screenshots/step2.jpg)
 
-- Скопируйте код ниже и вставьте в Console, нажмите Enter
+- Copy the code below and paste it into the Console, press Enter
 
 ```sh
 let timer;
@@ -49,13 +49,13 @@ window.setInterval(function () {
 }, 500);
 ```
 
-Ожидаем, пока не перестанет крутиться индикатор загрузки. Переходим к шагу 3.
+We wait until the loading indicator stops spinning. Go to step 3.
 
-**Шаг 3**
+**Step 3**
 
-Добавление инстументов.
+Adding tools.
 
-Скопируйте код ниже и вставьте в Console, нажмите Enter
+Copy the code below and paste it into the Console, press Enter
 
 ```sh
 (() => {
@@ -70,9 +70,9 @@ window.setInterval(function () {
 })();
 ```
 
-Скрипт будет работать до тех пор, пока не добавит все инструменты.
-Индикатором завершения можно считать появление Х на последнем инструменте:
+The script will run until it adds all the tools.
+The indicator of completion can be considered the appearance of X on the last instrument:
 
 ![Step3](https://github.com/vladpantyukhin/clicker-for-tradingview/blob/main/screenshots/step3.jpg)
 
-**Поблагодарить автора монетой [КЛАЦ](https://pay.cloudtips.ru/p/6bacb6ea)**
+**Thank the author with a coin [CLACK](https://pay.cloudtips.ru/p/6bacb6ea)**
